@@ -42,7 +42,6 @@ namespace LyThuyetDoThi
         public List<Dinh> timDuongDiThuatToanFordBellmanDoThiCoHuongTrongSoAm(DoThi dothi)
         {
             List<Dinh> duongdi = new List<Dinh>();
-            System.Diagnostics.Debug.WriteLine("Test");
             return duongdi;
         }
         public List<Dinh> timDuongDiThuatToanFordBellmanDoThiCoHuongTrongSoDuong(DoThi dothi)
