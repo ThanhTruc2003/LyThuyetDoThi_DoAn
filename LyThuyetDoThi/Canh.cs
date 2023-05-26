@@ -18,9 +18,9 @@ namespace LyThuyetDoThi
 
         public Canh(int Trongso, Dinh Dinhdau, Dinh Dinhcuoi)
         {
-            this.trongso = Trongso;
-            this.dinhdau = Dinhdau;
-            this.dinhcuoi = Dinhcuoi;
+            this.Trongso = Trongso;
+            this.Dinhdau = Dinhdau;
+            this.Dinhcuoi = Dinhcuoi;
         }
 
         public int Trongso { get; set; }

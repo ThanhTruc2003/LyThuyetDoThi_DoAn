@@ -20,6 +20,18 @@ namespace LyThuyetDoThi
         public List<Dinh> timDuongDiThuatToanPrime(DoThi dothi)
         {
             List<Dinh> duongdi = new List<Dinh>();
+            foreach (Dinh giatridinh in dothi.Dinh)
+            {
+                // xử lý thuật toán 
+                System.Diagnostics.Debug.WriteLine(giatridinh.Ten);
+                duongdi.Add(giatridinh);
+            }
+            foreach (Canh giatricanh in dothi.Canh)
+            {
+                // xử lý thuật toán 
+                string xemcanh = giatricanh.Dinhdau.Ten + " -> " + giatricanh.Dinhcuoi.Ten + ":" + giatricanh.Trongso.ToString();
+                System.Diagnostics.Debug.WriteLine(xemcanh);
+            }
             return duongdi;
         }
         public List<Dinh> timDuongDiThuatToanFordBellmanDoThiVoHuong(DoThi dothi)
