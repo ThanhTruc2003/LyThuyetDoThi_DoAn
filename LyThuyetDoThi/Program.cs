@@ -15,7 +15,7 @@
             Dinh dinhB = new Dinh("B",2,2);
             Dinh dinhC = new Dinh("C",3,3);
 
-            Canh canhAB = new Canh(3,dinhA,dinhB);
+            Canh canhAB = new Canh(-3,dinhA,dinhB);
             Canh canhAC = new Canh(3, dinhA, dinhC);
 
             dothi.Dinh.Add(dinhA);

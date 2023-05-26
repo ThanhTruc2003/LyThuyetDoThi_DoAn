@@ -10,7 +10,8 @@ namespace LyThuyetDoThi
     {
         public DoThi docfile()
         {
-            return new DoThi();
+            DoThi doThi = new DoThi();
+            return doThi;
         }
         public bool xetLienThong(DoThi doThi)
         {
@@ -39,12 +40,7 @@ namespace LyThuyetDoThi
             List<Dinh> duongdi = new List<Dinh>();
             return duongdi;
         }
-        public List<Dinh> timDuongDiThuatToanFordBellmanDoThiCoHuongTrongSoAm(DoThi dothi)
-        {
-            List<Dinh> duongdi = new List<Dinh>();
-            return duongdi;
-        }
-        public List<Dinh> timDuongDiThuatToanFordBellmanDoThiCoHuongTrongSoDuong(DoThi dothi)
+        public List<Dinh> timDuongDiThuatToanFordBellmanDoThiCoHuong(DoThi dothi)
         {
             List<Dinh> duongdi = new List<Dinh>();
             return duongdi;
