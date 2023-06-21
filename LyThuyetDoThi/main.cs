@@ -15,7 +15,6 @@ namespace LyThuyetDoThi
     public partial class main : Form
     {
         private DoThi dt;
-        private DoThi dothibandau;
         private int widthDinh = 180;
         private int heightDinh = 100;
         private int heightTextbox = 46;
@@ -451,7 +450,25 @@ namespace LyThuyetDoThi
 
         private void bt_XetLienThong_Click(object sender, EventArgs e)
         {
-
+            HoTro hoTro = new HoTro();
+            // Kiểm tra xem đồ thị đã được nhập hay chưa
+            if (dt.Dinh.Count == 0 || dt.Canh.Count == 0)
+            {
+                MessageBox.Show("Chưa nhập đồ thị", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             
+            }
+            else
+            {
+                bool isLienThong = hoTro.xetLienThong(dt);
+                if (isLienThong)
+                {
+                    MessageBox.Show("Đồ thị liên thông", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Đồ thị không liên thông", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }    
         }
 
         private void bt_Refresh_Click(object sender, EventArgs e)

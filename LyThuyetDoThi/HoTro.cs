@@ -15,6 +15,74 @@ namespace LyThuyetDoThi
         public bool xetLienThong(DoThi doThi)
         {
             bool ketqua = true;
+
+            // Khởi tạo danh sách đỉnh và danh sách cạnh từ đối tượng doThi
+            List<Dinh> dinh = doThi.Dinh;
+            List<Canh> canh = doThi.Canh; 
+
+            // Số đỉnh
+            int sodinh = dinh.Count;
+
+            // Tạo ma trận kề
+            // Ma trận kề được lưu trữ trong một mảng hai chiều có kích thước sodinh x sodinh
+            int[,] a = new int[sodinh, sodinh];
+            for (int i = 0; i < canh.Count; i++)
+            {
+                // IndexOf được sử dụng để tìm chỉ số của đỉnh trong danh sách đỉnh
+                int u = dinh.IndexOf(canh[i].Dinhdau);
+                int v = dinh.IndexOf(canh[i].Dinhcuoi);
+                // Vì là đồ thị vô hướng nên việc gán = 1 sẽ đảm bảo ma trận kề đối xứng qua đường chéo chính
+                // Tức là đỉnh u sẽ được nối với đỉnh v và ngược lại
+                a[u, v] = a[v, u] = 1;
+            }
+
+            // Khởi tạo mảng visited và số miền liên thông
+            int[] visited = new int[sodinh];
+            int nSoMienLienThong = 0;
+
+            // Hàm visit
+            void visit(int i, int nLabel)
+            {
+                // Gán nhãn nLabel cho đỉnh i
+                visited[i] = nLabel;
+
+                // Gọi Visit với các đỉnh j chưa được viếng thăm và có nối với i
+                for (int j = 0; j < sodinh; j++)
+                {
+                    if (visited[j] == 0 && a[i, j] != 0)
+                    {
+                        visit(j, nLabel);
+                    }
+                }
+            }
+
+            // Hàm XetLienThong
+            void XetLienThong()
+            {
+                // Khởi tạo visited và số miền liên thông
+                for (int i = 0; i < sodinh; i++)
+                {
+                    visited[i] = 0;
+                }
+                nSoMienLienThong = 0;
+
+                // Duyệt qua tất cả các đỉnh
+                for (int i = 0; i < sodinh; i++)
+                {
+                    if (visited[i] == 0)
+                    {
+                        nSoMienLienThong++;
+                        visit(i, nSoMienLienThong);
+                    }
+                }
+            }
+            // Gọi hàm XetLienThong
+            XetLienThong();
+            // Kiểm tra số miền liên thông
+            if (nSoMienLienThong == 0 || nSoMienLienThong > 1)
+            {
+                ketqua = false;
+            }
             return ketqua;
         }
   

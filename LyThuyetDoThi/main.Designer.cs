@@ -34,7 +34,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.bt_Refresh = new System.Windows.Forms.Button();
             this.txbTrongSo = new System.Windows.Forms.TextBox();
-            this.txb_XetLienThong = new System.Windows.Forms.TextBox();
             this.txb_Prim = new System.Windows.Forms.TextBox();
             this.txb_DinhCuoiCuaFord = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -88,7 +87,6 @@
             this.panel_Feature.Controls.Add(this.label8);
             this.panel_Feature.Controls.Add(this.bt_Refresh);
             this.panel_Feature.Controls.Add(this.txbTrongSo);
-            this.panel_Feature.Controls.Add(this.txb_XetLienThong);
             this.panel_Feature.Controls.Add(this.txb_Prim);
             this.panel_Feature.Controls.Add(this.txb_DinhCuoiCuaFord);
             this.panel_Feature.Controls.Add(this.label7);
@@ -136,9 +134,9 @@
             this.bt_Refresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bt_Refresh.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.bt_Refresh.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bt_Refresh.Location = new System.Drawing.Point(92, 537);
+            this.bt_Refresh.Location = new System.Drawing.Point(272, 489);
             this.bt_Refresh.Name = "bt_Refresh";
-            this.bt_Refresh.Size = new System.Drawing.Size(100, 33);
+            this.bt_Refresh.Size = new System.Drawing.Size(117, 33);
             this.bt_Refresh.TabIndex = 28;
             this.bt_Refresh.Text = "Đặt lại";
             this.bt_Refresh.UseVisualStyleBackColor = false;
@@ -152,15 +150,6 @@
             this.txbTrongSo.Name = "txbTrongSo";
             this.txbTrongSo.Size = new System.Drawing.Size(105, 26);
             this.txbTrongSo.TabIndex = 26;
-            // 
-            // txb_XetLienThong
-            // 
-            this.txb_XetLienThong.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txb_XetLienThong.Location = new System.Drawing.Point(168, 490);
-            this.txb_XetLienThong.Multiline = true;
-            this.txb_XetLienThong.Name = "txb_XetLienThong";
-            this.txb_XetLienThong.Size = new System.Drawing.Size(225, 26);
-            this.txb_XetLienThong.TabIndex = 25;
             // 
             // txb_Prim
             // 
@@ -354,9 +343,9 @@
             this.bt_XoaDoThi.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bt_XoaDoThi.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.bt_XoaDoThi.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bt_XoaDoThi.Location = new System.Drawing.Point(198, 537);
+            this.bt_XoaDoThi.Location = new System.Drawing.Point(40, 537);
             this.bt_XoaDoThi.Name = "bt_XoaDoThi";
-            this.bt_XoaDoThi.Size = new System.Drawing.Size(100, 33);
+            this.bt_XoaDoThi.Size = new System.Drawing.Size(116, 33);
             this.bt_XoaDoThi.TabIndex = 6;
             this.bt_XoaDoThi.Text = "Xóa đồ thị";
             this.bt_XoaDoThi.UseVisualStyleBackColor = false;
@@ -377,9 +366,9 @@
             this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button9.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button9.Location = new System.Drawing.Point(304, 537);
+            this.button9.Location = new System.Drawing.Point(272, 537);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(100, 33);
+            this.button9.Size = new System.Drawing.Size(117, 33);
             this.button9.TabIndex = 8;
             this.button9.Text = "Đọc File";
             this.button9.UseVisualStyleBackColor = false;
@@ -392,7 +381,7 @@
             this.bt_XetLienThong.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bt_XetLienThong.Location = new System.Drawing.Point(40, 490);
             this.bt_XetLienThong.Name = "bt_XetLienThong";
-            this.bt_XetLienThong.Size = new System.Drawing.Size(122, 27);
+            this.bt_XetLienThong.Size = new System.Drawing.Size(116, 32);
             this.bt_XetLienThong.TabIndex = 3;
             this.bt_XetLienThong.Text = "Xét liên thông";
             this.bt_XetLienThong.UseVisualStyleBackColor = false;
@@ -465,7 +454,6 @@
         private Panel panel_Feature;
         private Button bt_Refresh;
         private TextBox txbTrongSo;
-        private TextBox txb_XetLienThong;
         private TextBox txb_Prim;
         private TextBox txb_DinhCuoiCuaFord;
         private Label label7;
