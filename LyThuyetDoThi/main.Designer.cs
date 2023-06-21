@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.panel_Graph = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txb_KetLuan = new System.Windows.Forms.TextBox();
             this.panel_Feature = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bt_Refresh = new System.Windows.Forms.Button();
             this.txbTrongSo = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txb_XetLienThong = new System.Windows.Forms.TextBox();
+            this.txb_Prim = new System.Windows.Forms.TextBox();
+            this.txb_DinhCuoiCuaFord = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txb_DinhDauCuaFord = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txbDinhCuoiCanXoa = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txbDinhDauCanXoa = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txbDinhDau = new System.Windows.Forms.TextBox();
             this.bt_xoaCanh = new System.Windows.Forms.Button();
@@ -52,11 +52,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.bt_xoaDinh = new System.Windows.Forms.Button();
             this.bt_themCanh = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button7 = new System.Windows.Forms.Button();
+            this.txbXoaDinh = new System.Windows.Forms.TextBox();
+            this.bt_XoaDoThi = new System.Windows.Forms.Button();
             this.txbThemDinh = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.bt_XetLienThong = new System.Windows.Forms.Button();
             this.bt_themDinh = new System.Windows.Forms.Button();
             this.bt_Prim = new System.Windows.Forms.Button();
             this.bt_Ford = new System.Windows.Forms.Button();
@@ -66,35 +66,37 @@
             // 
             // panel_Graph
             // 
-            this.panel_Graph.Controls.Add(this.textBox1);
+            this.panel_Graph.Controls.Add(this.txb_KetLuan);
             this.panel_Graph.Location = new System.Drawing.Point(12, 12);
             this.panel_Graph.Name = "panel_Graph";
             this.panel_Graph.Size = new System.Drawing.Size(688, 586);
             this.panel_Graph.TabIndex = 0;
             this.panel_Graph.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Graph_Paint);
             // 
-            // textBox1
+            // txb_KetLuan
             // 
-            this.textBox1.Location = new System.Drawing.Point(3, 537);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(682, 46);
-            this.textBox1.TabIndex = 0;
+            this.txb_KetLuan.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txb_KetLuan.Location = new System.Drawing.Point(3, 529);
+            this.txb_KetLuan.Multiline = true;
+            this.txb_KetLuan.Name = "txb_KetLuan";
+            this.txb_KetLuan.ReadOnly = true;
+            this.txb_KetLuan.Size = new System.Drawing.Size(682, 54);
+            this.txb_KetLuan.TabIndex = 0;
             // 
             // panel_Feature
             // 
             this.panel_Feature.Controls.Add(this.label8);
-            this.panel_Feature.Controls.Add(this.button1);
+            this.panel_Feature.Controls.Add(this.bt_Refresh);
             this.panel_Feature.Controls.Add(this.txbTrongSo);
-            this.panel_Feature.Controls.Add(this.textBox10);
-            this.panel_Feature.Controls.Add(this.textBox9);
-            this.panel_Feature.Controls.Add(this.textBox8);
+            this.panel_Feature.Controls.Add(this.txb_XetLienThong);
+            this.panel_Feature.Controls.Add(this.txb_Prim);
+            this.panel_Feature.Controls.Add(this.txb_DinhCuoiCuaFord);
             this.panel_Feature.Controls.Add(this.label7);
-            this.panel_Feature.Controls.Add(this.textBox7);
+            this.panel_Feature.Controls.Add(this.txb_DinhDauCuaFord);
             this.panel_Feature.Controls.Add(this.label6);
-            this.panel_Feature.Controls.Add(this.textBox6);
+            this.panel_Feature.Controls.Add(this.txbDinhCuoiCanXoa);
             this.panel_Feature.Controls.Add(this.label5);
-            this.panel_Feature.Controls.Add(this.textBox5);
+            this.panel_Feature.Controls.Add(this.txbDinhDauCanXoa);
             this.panel_Feature.Controls.Add(this.label4);
             this.panel_Feature.Controls.Add(this.txbDinhDau);
             this.panel_Feature.Controls.Add(this.bt_xoaCanh);
@@ -104,11 +106,11 @@
             this.panel_Feature.Controls.Add(this.label1);
             this.panel_Feature.Controls.Add(this.bt_xoaDinh);
             this.panel_Feature.Controls.Add(this.bt_themCanh);
-            this.panel_Feature.Controls.Add(this.textBox2);
-            this.panel_Feature.Controls.Add(this.button7);
+            this.panel_Feature.Controls.Add(this.txbXoaDinh);
+            this.panel_Feature.Controls.Add(this.bt_XoaDoThi);
             this.panel_Feature.Controls.Add(this.txbThemDinh);
             this.panel_Feature.Controls.Add(this.button9);
-            this.panel_Feature.Controls.Add(this.button4);
+            this.panel_Feature.Controls.Add(this.bt_XetLienThong);
             this.panel_Feature.Controls.Add(this.bt_themDinh);
             this.panel_Feature.Controls.Add(this.bt_Prim);
             this.panel_Feature.Controls.Add(this.bt_Ford);
@@ -128,18 +130,19 @@
             this.label8.TabIndex = 29;
             this.label8.Text = "Trọng số:";
             // 
-            // button1
+            // bt_Refresh
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button1.Location = new System.Drawing.Point(92, 537);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 33);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Đặt lại";
-            this.button1.UseVisualStyleBackColor = false;
+            this.bt_Refresh.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.bt_Refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt_Refresh.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.bt_Refresh.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bt_Refresh.Location = new System.Drawing.Point(92, 537);
+            this.bt_Refresh.Name = "bt_Refresh";
+            this.bt_Refresh.Size = new System.Drawing.Size(100, 33);
+            this.bt_Refresh.TabIndex = 28;
+            this.bt_Refresh.Text = "Đặt lại";
+            this.bt_Refresh.UseVisualStyleBackColor = false;
+            this.bt_Refresh.Click += new System.EventHandler(this.bt_Refresh_Click);
             // 
             // txbTrongSo
             // 
@@ -150,32 +153,32 @@
             this.txbTrongSo.Size = new System.Drawing.Size(105, 26);
             this.txbTrongSo.TabIndex = 26;
             // 
-            // textBox10
+            // txb_XetLienThong
             // 
-            this.textBox10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox10.Location = new System.Drawing.Point(168, 490);
-            this.textBox10.Multiline = true;
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(225, 26);
-            this.textBox10.TabIndex = 25;
+            this.txb_XetLienThong.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txb_XetLienThong.Location = new System.Drawing.Point(168, 490);
+            this.txb_XetLienThong.Multiline = true;
+            this.txb_XetLienThong.Name = "txb_XetLienThong";
+            this.txb_XetLienThong.Size = new System.Drawing.Size(225, 26);
+            this.txb_XetLienThong.TabIndex = 25;
             // 
-            // textBox9
+            // txb_Prim
             // 
-            this.textBox9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox9.Location = new System.Drawing.Point(40, 387);
-            this.textBox9.Multiline = true;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(105, 26);
-            this.textBox9.TabIndex = 24;
+            this.txb_Prim.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txb_Prim.Location = new System.Drawing.Point(40, 387);
+            this.txb_Prim.Multiline = true;
+            this.txb_Prim.Name = "txb_Prim";
+            this.txb_Prim.Size = new System.Drawing.Size(105, 26);
+            this.txb_Prim.TabIndex = 24;
             // 
-            // textBox8
+            // txb_DinhCuoiCuaFord
             // 
-            this.textBox8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox8.Location = new System.Drawing.Point(272, 405);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(105, 26);
-            this.textBox8.TabIndex = 23;
+            this.txb_DinhCuoiCuaFord.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txb_DinhCuoiCuaFord.Location = new System.Drawing.Point(272, 405);
+            this.txb_DinhCuoiCuaFord.Multiline = true;
+            this.txb_DinhCuoiCuaFord.Name = "txb_DinhCuoiCuaFord";
+            this.txb_DinhCuoiCuaFord.Size = new System.Drawing.Size(105, 26);
+            this.txb_DinhCuoiCuaFord.TabIndex = 23;
             // 
             // label7
             // 
@@ -187,14 +190,14 @@
             this.label7.TabIndex = 22;
             this.label7.Text = "Đỉnh cuối:";
             // 
-            // textBox7
+            // txb_DinhDauCuaFord
             // 
-            this.textBox7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox7.Location = new System.Drawing.Point(272, 373);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(105, 26);
-            this.textBox7.TabIndex = 21;
+            this.txb_DinhDauCuaFord.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txb_DinhDauCuaFord.Location = new System.Drawing.Point(272, 373);
+            this.txb_DinhDauCuaFord.Multiline = true;
+            this.txb_DinhDauCuaFord.Name = "txb_DinhDauCuaFord";
+            this.txb_DinhDauCuaFord.Size = new System.Drawing.Size(105, 26);
+            this.txb_DinhDauCuaFord.TabIndex = 21;
             // 
             // label6
             // 
@@ -206,14 +209,14 @@
             this.label6.TabIndex = 20;
             this.label6.Text = "Đỉnh đầu:";
             // 
-            // textBox6
+            // txbDinhCuoiCanXoa
             // 
-            this.textBox6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox6.Location = new System.Drawing.Point(272, 283);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(105, 26);
-            this.textBox6.TabIndex = 19;
+            this.txbDinhCuoiCanXoa.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txbDinhCuoiCanXoa.Location = new System.Drawing.Point(272, 283);
+            this.txbDinhCuoiCanXoa.Multiline = true;
+            this.txbDinhCuoiCanXoa.Name = "txbDinhCuoiCanXoa";
+            this.txbDinhCuoiCanXoa.Size = new System.Drawing.Size(105, 26);
+            this.txbDinhCuoiCanXoa.TabIndex = 19;
             // 
             // label5
             // 
@@ -225,14 +228,14 @@
             this.label5.TabIndex = 18;
             this.label5.Text = "Đỉnh cuối:";
             // 
-            // textBox5
+            // txbDinhDauCanXoa
             // 
-            this.textBox5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox5.Location = new System.Drawing.Point(272, 251);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(105, 26);
-            this.textBox5.TabIndex = 17;
+            this.txbDinhDauCanXoa.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txbDinhDauCanXoa.Location = new System.Drawing.Point(272, 251);
+            this.txbDinhDauCanXoa.Multiline = true;
+            this.txbDinhDauCanXoa.Name = "txbDinhDauCanXoa";
+            this.txbDinhDauCanXoa.Size = new System.Drawing.Size(105, 26);
+            this.txbDinhDauCanXoa.TabIndex = 17;
             // 
             // label4
             // 
@@ -265,6 +268,7 @@
             this.bt_xoaCanh.TabIndex = 2;
             this.bt_xoaCanh.Text = "Xóa cạnh";
             this.bt_xoaCanh.UseVisualStyleBackColor = false;
+            this.bt_xoaCanh.Click += new System.EventHandler(this.bt_xoaCanh_Click);
             // 
             // txbDinhCuoi
             // 
@@ -319,6 +323,7 @@
             this.bt_xoaDinh.TabIndex = 7;
             this.bt_xoaDinh.Text = "Xóa đỉnh";
             this.bt_xoaDinh.UseVisualStyleBackColor = false;
+            this.bt_xoaDinh.Click += new System.EventHandler(this.bt_xoaDinh_Click);
             // 
             // bt_themCanh
             // 
@@ -334,27 +339,28 @@
             this.bt_themCanh.UseVisualStyleBackColor = false;
             this.bt_themCanh.Click += new System.EventHandler(this.bt_themCanh_Click);
             // 
-            // textBox2
+            // txbXoaDinh
             // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.Location = new System.Drawing.Point(40, 256);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(105, 26);
-            this.textBox2.TabIndex = 11;
+            this.txbXoaDinh.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txbXoaDinh.Location = new System.Drawing.Point(40, 256);
+            this.txbXoaDinh.Multiline = true;
+            this.txbXoaDinh.Name = "txbXoaDinh";
+            this.txbXoaDinh.Size = new System.Drawing.Size(105, 26);
+            this.txbXoaDinh.TabIndex = 11;
             // 
-            // button7
+            // bt_XoaDoThi
             // 
-            this.button7.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button7.Location = new System.Drawing.Point(198, 537);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(100, 33);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "Xóa đồ thị";
-            this.button7.UseVisualStyleBackColor = false;
+            this.bt_XoaDoThi.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.bt_XoaDoThi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt_XoaDoThi.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.bt_XoaDoThi.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bt_XoaDoThi.Location = new System.Drawing.Point(198, 537);
+            this.bt_XoaDoThi.Name = "bt_XoaDoThi";
+            this.bt_XoaDoThi.Size = new System.Drawing.Size(100, 33);
+            this.bt_XoaDoThi.TabIndex = 6;
+            this.bt_XoaDoThi.Text = "Xóa đồ thị";
+            this.bt_XoaDoThi.UseVisualStyleBackColor = false;
+            this.bt_XoaDoThi.Click += new System.EventHandler(this.bt_XoaDoThi_Click);
             // 
             // txbThemDinh
             // 
@@ -378,18 +384,19 @@
             this.button9.Text = "Đọc File";
             this.button9.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // bt_XetLienThong
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button4.Location = new System.Drawing.Point(40, 490);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(122, 27);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Xét liên thông";
-            this.button4.UseVisualStyleBackColor = false;
+            this.bt_XetLienThong.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.bt_XetLienThong.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt_XetLienThong.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.bt_XetLienThong.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bt_XetLienThong.Location = new System.Drawing.Point(40, 490);
+            this.bt_XetLienThong.Name = "bt_XetLienThong";
+            this.bt_XetLienThong.Size = new System.Drawing.Size(122, 27);
+            this.bt_XetLienThong.TabIndex = 3;
+            this.bt_XetLienThong.Text = "Xét liên thông";
+            this.bt_XetLienThong.UseVisualStyleBackColor = false;
+            this.bt_XetLienThong.Click += new System.EventHandler(this.bt_XetLienThong_Click);
             // 
             // bt_themDinh
             // 
@@ -417,6 +424,7 @@
             this.bt_Prim.TabIndex = 5;
             this.bt_Prim.Text = "Prim";
             this.bt_Prim.UseVisualStyleBackColor = false;
+            this.bt_Prim.Click += new System.EventHandler(this.bt_Prim_Click);
             // 
             // bt_Ford
             // 
@@ -455,17 +463,17 @@
 
         private Panel panel_Graph;
         private Panel panel_Feature;
-        private Button button1;
+        private Button bt_Refresh;
         private TextBox txbTrongSo;
-        private TextBox textBox10;
-        private TextBox textBox9;
-        private TextBox textBox8;
+        private TextBox txb_XetLienThong;
+        private TextBox txb_Prim;
+        private TextBox txb_DinhCuoiCuaFord;
         private Label label7;
-        private TextBox textBox7;
+        private TextBox txb_DinhDauCuaFord;
         private Label label6;
-        private TextBox textBox6;
+        private TextBox txbDinhCuoiCanXoa;
         private Label label5;
-        private TextBox textBox5;
+        private TextBox txbDinhDauCanXoa;
         private Label label4;
         private TextBox txbDinhDau;
         private Button bt_xoaCanh;
@@ -475,15 +483,15 @@
         private Label label1;
         private Button bt_xoaDinh;
         private Button bt_themCanh;
-        private TextBox textBox2;
-        private Button button7;
+        private TextBox txbXoaDinh;
+        private Button bt_XoaDoThi;
         private TextBox txbThemDinh;
         private Button button9;
-        private Button button4;
+        private Button bt_XetLienThong;
         private Button bt_themDinh;
         private Button bt_Prim;
         private Button bt_Ford;
-        private TextBox textBox1;
+        private TextBox txb_KetLuan;
         private Label label8;
     }
 }
