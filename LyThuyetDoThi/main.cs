@@ -402,13 +402,13 @@ namespace LyThuyetDoThi
             }
         }
 
-        private int tinhTongTrongSo(List<Dinh> duongDiThuatToanPrim)
+        private int tinhTongTrongSo(List<Dinh> duongDi)
         {
             int tongTrongSo = 0;
-            for (int i = 0; i < duongDiThuatToanPrim.Count - 1; i++)
+            for (int i = 0; i < duongDi.Count - 1; i++)
             {
-                Dinh dinhDau = duongDiThuatToanPrim[i];
-                Dinh dinhCuoi = duongDiThuatToanPrim[i + 1];
+                Dinh dinhDau = duongDi[i];
+                Dinh dinhCuoi = duongDi[i + 1];
                 foreach (Canh canh in dt.Canh)
                 {
                     if ((canh.Dinhdau == dinhDau && canh.Dinhcuoi == dinhCuoi) ||
@@ -432,20 +432,92 @@ namespace LyThuyetDoThi
             }    
             else
             {
-                List<Dinh> duongDiThuatToanPrim = new HoTro().timDuongDiThuatToanPrim(dt, dinhBatDau);
-                toMau(duongDiThuatToanPrim);
-                // Tính tổng trọng số cây khung nhỏ nhất
-                int tongTrongSo = tinhTongTrongSo(duongDiThuatToanPrim);
-                
-                // Kết hợp các giá trị của thuộc tính Ten của các đối tượng trong danh sách duongDiThuatToanPrim thành một chuỗi duy nhất, với chuỗi phân tách " -> " nằm giữa các giá trị.
-                // Kết quả là một chuỗi sẽ hiển thị các tên của các đỉnh trong danh sách được nối lại với nhau, ngăn cách bằng chuỗi phân tách. 
-                string ketLuan = "Vậy cây khung nhỏ nhất của đồ thị là: " + string.Join(" -> ", duongDiThuatToanPrim.Select(d => d.Ten));
-                
-                // \r\n dùng để xuống dòng
-                ketLuan += "\r\nTổng trọng số của cây khung là: " + tongTrongSo;
-                txb_KetLuan.Text = ketLuan;
+                // Kiểm tra xem có cạnh có trọng số âm trong đồ thị hay không
+                bool coCanhAm = dt.Canh.Any(c => c.Trongso < 0);
+                if (coCanhAm)
+                {
+                    MessageBox.Show("Đồ thị chứa cạnh có trọng số âm", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    List<Dinh> duongDiThuatToanPrim = new HoTro().timDuongDiThuatToanPrim(dt, dinhBatDau);
+                    toMau(duongDiThuatToanPrim);
+                    // Tính tổng trọng số cây khung nhỏ nhất
+                    int tongTrongSo = tinhTongTrongSo(duongDiThuatToanPrim);
+
+                    // Kết hợp các giá trị của thuộc tính Ten của các đối tượng trong danh sách duongDiThuatToanPrim thành một chuỗi duy nhất, với chuỗi phân tách " -> " nằm giữa các giá trị.
+                    // Kết quả là một chuỗi sẽ hiển thị các tên của các đỉnh trong danh sách được nối lại với nhau, ngăn cách bằng chuỗi phân tách. 
+                    string ketLuan = "Vậy cây khung nhỏ nhất của đồ thị là: " + string.Join(" -> ", duongDiThuatToanPrim.Select(d => d.Ten));
+
+                    // \r\n dùng để xuống dòng
+                    ketLuan += "\r\nTổng trọng số của cây khung là: " + tongTrongSo;
+                    txb_KetLuan.Text = ketLuan;
+                }    
             }
             txb_Prim.Text = "";
+        }
+
+        private void bt_Ford_Click(object sender, EventArgs e)
+        {
+            // Lấy tên đỉnh bắt đầu và đỉnh cuối từ các textbox trên giao diện
+            string tenDinhBatDau = txb_DinhDauCuaFord.Text;
+            string tenDinhCuoi = txb_DinhCuoiCuaFord.Text;
+            // Kiểm tra xem các textbox có rỗng hay không
+            if (txb_DinhDauCuaFord.Text == "" || txb_DinhCuoiCuaFord.Text == "")
+            {
+                // Hiển thị thông báo lỗi nếu các textbox rỗng
+                MessageBox.Show("Vui lòng nhập đỉnh", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            // Tìm đối tượng đỉnh bắt đầu và đỉnh cuối từ danh sách đỉnh trong đồ thị
+             Dinh dinhBatDau = dt.Dinh.FirstOrDefault(d => d.Ten == tenDinhBatDau);
+             Dinh dinhCuoi = dt.Dinh.FirstOrDefault(d => d.Ten == tenDinhCuoi);
+            // Kiểm tra xem đỉnh bắt đầu và đỉnh cuối có tồn tại trong đồ thị hay không
+            if (dinhBatDau == null || dinhCuoi == null)
+            {
+                // Hiển thị thông báo lỗi nếu đỉnh bắt đầu hoặc đỉnh cuối không tồn tại trong đồ thị
+                MessageBox.Show("Đỉnh không tồn tại trong đồ thị", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                // Kiểm tra xem có cạnh có trọng số âm trong đồ thị hay không
+                bool coCanhAm = dt.Canh.Any(c => c.Trongso < 0);
+                if (coCanhAm)
+                {
+                    MessageBox.Show("Đồ thị chứa chu trình âm", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    // Thực hiện thuật toán Ford-Bellman để tìm đường đi từ đỉnh bắt đầu đến đỉnh cuối
+                    List<Dinh> duongDiThuatToanFordBellman = new HoTro().timDuongDiThuatToanFordBellmanDoThiVoHuong(dt, dinhBatDau, dinhCuoi);
+                    // Kiểm tra xem có tồn tại đường đi từ đỉnh bắt đầu đến đỉnh cuối hay không
+                    if (duongDiThuatToanFordBellman == null || duongDiThuatToanFordBellman.Count == 0)
+                    {
+                        // Hiển thị thông báo lỗi nếu không tồn tại đường đi
+                        MessageBox.Show("Không có đường đi", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        // Tô màu đường đi trên panel
+                        toMau(duongDiThuatToanFordBellman);
+                        int tongTrongSo = tinhTongTrongSo(duongDiThuatToanFordBellman);
+
+                        // Kết hợp các giá trị của thuộc tính Ten của các đối tượng trong danh sách duongDiThuatToanPrim thành một chuỗi duy nhất, với chuỗi phân tách " -> " nằm giữa các giá trị.
+                        // Kết quả là một chuỗi sẽ hiển thị các tên của các đỉnh trong danh sách được nối lại với nhau, ngăn cách bằng chuỗi phân tách. 
+                        string ketLuan = "Vậy đường đi ngắn nhất từ " + tenDinhBatDau + " đến " + tenDinhCuoi + " là: " + string.Join(" -> ", duongDiThuatToanFordBellman.Select(d => d.Ten));
+
+                        // \r\n dùng để xuống dòng
+                        ketLuan += "\r\nTổng trọng số của đường đi là: " + tongTrongSo;
+                        txb_KetLuan.Text = ketLuan;
+                    }
+                }    
+                // Xóa nội dung các textbox sau khi chạy thuật toán
+                txb_DinhDauCuaFord.Text = "";
+                txb_DinhCuoiCuaFord.Text = "";
+            }    
         }
 
         private void bt_XetLienThong_Click(object sender, EventArgs e)

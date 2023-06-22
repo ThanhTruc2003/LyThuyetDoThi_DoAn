@@ -26,6 +26,5 @@ namespace LyThuyetDoThi
         public int Trongso { get; set; }
         public Dinh Dinhdau { get; set; }
         public Dinh Dinhcuoi { get; set; }
-        //public List<Canh> DanhSachCanh { get; set; }
     }
 }

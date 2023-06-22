@@ -427,13 +427,14 @@
             this.bt_Ford.TabIndex = 4;
             this.bt_Ford.Text = "Ford - Bellman";
             this.bt_Ford.UseVisualStyleBackColor = false;
+            this.bt_Ford.Click += new System.EventHandler(this.bt_Ford_Click);
             // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(1147, 610);
+            this.ClientSize = new System.Drawing.Size(1147, 621);
             this.Controls.Add(this.panel_Feature);
             this.Controls.Add(this.panel_Graph);
             this.ForeColor = System.Drawing.SystemColors.ControlText;

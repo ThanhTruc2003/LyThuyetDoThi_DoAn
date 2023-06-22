@@ -89,19 +89,24 @@ namespace LyThuyetDoThi
         public List<Dinh> timDuongDiThuatToanPrim(DoThi dothi, Dinh dinhBatDau)
         {
             List<Dinh> duongdi = new List<Dinh>();
-
             // Kiểm tra nếu đồ thị không có đỉnh hoặc không có cạnh
             if (dothi.Dinh.Count == 0 || dothi.Canh.Count == 0)
                 return duongdi;
-
             // Chọn một đỉnh bất kỳ làm đỉnh xuất phát
             Dinh dinhBatKy = dinhBatDau;
             duongdi.Add(dinhBatKy);
-
             // Tạo một tập hợp chứa các đỉnh đã được thăm
             HashSet<Dinh> daTham = new HashSet<Dinh>();
             daTham.Add(dinhBatKy);
-
+            // Kiểm tra nếu tồn tại cạnh có trọng số âm
+            foreach (Canh canh in dothi.Canh)
+            {
+                if (canh.Trongso < 0)
+                {
+                    // Đồ thị có cạnh âm, không chạy thuật toán Prim
+                    return duongdi;
+                }
+            }
             // Lặp cho đến khi tất cả các đỉnh được thăm
             while (duongdi.Count < dothi.Dinh.Count)
             {
@@ -140,11 +145,104 @@ namespace LyThuyetDoThi
             return duongdi;
         }
 
-        public List<Dinh> timDuongDiThuatToanFordBellmanDoThiVoHuong(DoThi dothi)
+        public List<Dinh> timDuongDiThuatToanFordBellmanDoThiVoHuong(DoThi dothi, Dinh dinhBatDau, Dinh dinhCuoi)
         {
             List<Dinh> duongdi = new List<Dinh>();
-            return duongdi;
+
+            // Khởi tạo các giá trị ban đầu
+            Dictionary<Dinh, int> khoangCach = new Dictionary<Dinh, int>();
+            Dictionary<Dinh, Dinh> duongDiTruoc = new Dictionary<Dinh, Dinh>();
+
+            // Khởi tạo khoảng cách và đường đi trước cho mỗi đỉnh trong đồ thị
+            foreach (Dinh dinh in dothi.Dinh)
+            {
+                khoangCach[dinh] = int.MaxValue; // Đặt khoảng cách ban đầu là vô cùng
+                duongDiTruoc[dinh] = null; // Đặt đường đi trước ban đầu là null
+            }
+
+            khoangCach[dinhBatDau] = 0; // Khoảng cách từ đỉnh bắt đầu đến chính nó là 0
+
+            //Gán số lượng đỉnh và số lượng cạnh của đồ thị vào các biến.
+            int soDinh = dothi.Dinh.Count;
+            int soCanh = dothi.Canh.Count;
+
+            // Thực hiện thuật toán Bellman-Ford
+            // Với mỗi bước k từ 1 đến soDinh - 1
+            // Duyệt qua tất cả các cạnh trong đồ thị
+            // Cập nhật khoảng cách và đường đi trước đó nếu tìm thấy đường đi ngắn hơn.
+            for (int k = 1; k <= soDinh - 1; k++)
+            {
+                for (int i = 0; i < soCanh; i++)
+                {
+                    Dinh u = dothi.Canh[i].Dinhdau; // Đỉnh đầu của cạnh
+                    Dinh v = dothi.Canh[i].Dinhcuoi; // Đỉnh cuối của cạnh
+                    int trongSo = dothi.Canh[i].Trongso; // Trọng số của cạnh
+
+                    // Cập nhật khoảng cách và đường đi trước nếu tìm thấy đường đi ngắn hơn
+                    if (khoangCach[u] != int.MaxValue && khoangCach[u] + trongSo < khoangCach[v])
+                    {
+                        khoangCach[v] = khoangCach[u] + trongSo;
+                        duongDiTruoc[v] = u;
+                    }
+
+                    // Với đồ thị vô hướng, thêm đoạn code sau để xử lý cạnh ngược lại
+                    if (khoangCach[v] != int.MaxValue && khoangCach[v] + trongSo < khoangCach[u])
+                    {
+                        khoangCach[u] = khoangCach[v] + trongSo;
+                        duongDiTruoc[u] = v;
+                    }
+                }
+            }
+            bool ChuTrinhAm = false;
+            // Kiểm tra xem có chứa chu trình âm hay không
+            //Bằng cách duyệt qua tất cả các cạnh trong đồ thị và kiểm tra điều kiện.
+            for (int i = 0; i < soCanh; i++)
+            {
+                Dinh u = dothi.Canh[i].Dinhdau;
+                Dinh v = dothi.Canh[i].Dinhcuoi;
+                int trongSo = dothi.Canh[i].Trongso;
+                if (khoangCach[u] != int.MaxValue && khoangCach[u] + trongSo < khoangCach[v])
+                {
+                    ChuTrinhAm = true;
+                    break;
+                }
+
+                // Kiểm tra cạnh ngược lại
+                if (khoangCach[v] != int.MaxValue && khoangCach[v] + trongSo < khoangCach[u])
+                {
+                    ChuTrinhAm = true;
+                    break;
+                }
+            }
+            bool coDuongDi = duongDiTruoc[dinhCuoi] != null; // Kiểm tra xem có đường đi từ đỉnh bắt đầu đến đỉnh kết thúc
+
+            if (!coDuongDi)
+            {
+                return null;
+            }
+            else
+            {
+                // Tạo đường đi từ đỉnh đầu đến đỉnh cuối
+                //bằng cách đi ngược từ đỉnh cuối theo đường đi trước đó V
+                //Và thêm các đỉnh vào danh sách duongdi
+                Dinh dinhHienTai = dinhCuoi;
+                while (dinhHienTai != null)
+                {
+                    duongdi.Add(dinhHienTai); // Thêm đỉnh vào danh sách đường đi
+                    dinhHienTai = duongDiTruoc[dinhHienTai]; // Di chuyển đến đỉnh trước đó trong đường đi
+                    if (dinhHienTai == dinhBatDau)
+                    {
+                        duongdi.Add(dinhHienTai); // Thêm đỉnh đầu vào danh sách đường đi
+                        break;// Nếu gặp đỉnh bắt đầu, thêm đỉnh đầu vào danh sách và dừng vòng lặp.
+                    }
+                }
+
+                duongdi.Reverse(); // Đảo ngược danh sách để có đường đi từ đỉnh cuối đến đỉnh đầu
+
+                return duongdi;//Trả về danh sách duongdi là đường đi từ dinhBatDau đến dinhCuoi.
+            }    
         }
+
         public List<Dinh> timDuongDiThuatToanFordBellmanDoThiCoHuong(DoThi dothi)
         {
             List<Dinh> duongdi = new List<Dinh>();
