@@ -21,7 +21,6 @@ namespace LyThuyetDoThi
 
         private void label1_Click(object sender, EventArgs e)
         {
-            hotro.docfile();
         }
     }
 }

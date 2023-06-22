@@ -15,10 +15,10 @@ namespace LyThuyetDoThi
     public partial class main : Form
     {
         private DoThi dt;
-        private int widthDinh = 180;
+        private int widthDinh = 500;
         private int heightDinh = 100;
         private int heightTextbox = 46;
-        private int DuongKinh = 20;
+        private int DuongKinh = 40;
         private int ToaDoX_DinhDauTien = 137;
         private int ToaDoY_DinhDauTien = 99;
         private int TrongSoCanhDaThem = 0;
@@ -104,7 +104,7 @@ namespace LyThuyetDoThi
             {
                 MessageBox.Show("Đỉnh đã tồn tại", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txbThemDinh.Text = "";
-            }    
+            }
             else
             {
                 // Tạo đỉnh đầu tiên
@@ -160,7 +160,7 @@ namespace LyThuyetDoThi
             panel_Graph.Refresh();
             // Lấy graphics từ panel_Graph
             Graphics g = panel_Graph.CreateGraphics();
-           
+
             // Vẽ các cạnh trên đồ thị
             foreach (Canh canh in dt.Canh)
             {
@@ -171,7 +171,7 @@ namespace LyThuyetDoThi
                 int y2 = canh.Dinhcuoi.ToadoY;
                 string trongso = Convert.ToString(canh.Trongso);
                 Pen p = new Pen(Color.Black, 5);
-                g.DrawLine(p, x1 + 10 , y1 + 10, x2 + 10, y2 + 10);     // các tọa độ + (đường kính hình tròn của đỉnh được vẽ / 2)
+                g.DrawLine(p, x1 + 10, y1 + 10, x2 + 10, y2 + 10);     // các tọa độ + (đường kính hình tròn của đỉnh được vẽ / 2)
 
                 // Vẽ trọng số
                 Font font = new Font("Arial", 14);
@@ -182,7 +182,7 @@ namespace LyThuyetDoThi
                 int trungdiemX = (x1 + x2) / 2;                         // Tọa độ x tại vị trí trung tâm của cạnh
                 int trungdiemY = (y1 + y2) / 2;                         // Tọa độ y tại vị trí trung tâm của cạnh
                 g.DrawString(trongso, font, brush, trungdiemX, trungdiemY, stringFormat);
-               
+
             }
         }
 
@@ -225,7 +225,7 @@ namespace LyThuyetDoThi
                 if (TrongSoCanhDaThem == 0)
                 {
                     MessageBox.Show("Không thể thêm cạnh", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }    
+                }
                 else
                 {
                     if (DinhDauDaTonTai == DinhCuoiDaTonTai)
@@ -254,7 +254,7 @@ namespace LyThuyetDoThi
                 txbDinhDau.Text = "";
                 txbDinhCuoi.Text = "";
                 txbTrongSo.Text = "";
-            }     
+            }
         }
 
         private void xoaDinh(string tenDinh)
@@ -325,17 +325,17 @@ namespace LyThuyetDoThi
                             {
                                 // Đặt tọa độ X của đỉnh hiện tại bằng tọa độ X của đỉnh đầu tiên
                                 // Tọa độ Y của đỉnh hiện tại bằng tọa độ Y của đỉnh trước + đường kính hình tròn được vẽ + khoảng cách chiều cao giữa 2 đỉnh
-                                dt.Dinh[i].ToadoX = ToaDoX_DinhDauTien;                         
-                                dt.Dinh[i].ToadoY = dinhTruoc.ToadoY + DuongKinh + heightDinh; 
-                            }    
+                                dt.Dinh[i].ToadoX = ToaDoX_DinhDauTien;
+                                dt.Dinh[i].ToadoY = dinhTruoc.ToadoY + DuongKinh + heightDinh;
+                            }
                         }
                         else
                         {
                             // Đặt tọa độ Y của đỉnh hiện tại bằng tọa độ Y của đỉnh đầu tiên
                             // Tọa độ X của đỉnh hiện tại bằng tọa độ X của đỉnh trước + đường kính hình tròn được vẽ + khoảng cách chiều rộng giữa 2 đỉnh
-                            dt.Dinh[i].ToadoX = dinhTruoc.ToadoX + DuongKinh + widthDinh; 
-                            dt.Dinh[i].ToadoY = dinhTruoc.ToadoY; 
-                        }   
+                            dt.Dinh[i].ToadoX = dinhTruoc.ToadoX + DuongKinh + widthDinh;
+                            dt.Dinh[i].ToadoY = dinhTruoc.ToadoY;
+                        }
                     }
                 }
                 veDinh(); // Vẽ lại các đỉnh còn lại trên graphImage
@@ -429,7 +429,7 @@ namespace LyThuyetDoThi
             if (txb_Prim.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập đỉnh", "Warming", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }    
+            }
             else
             {
                 // Kiểm tra xem có cạnh có trọng số âm trong đồ thị hay không
@@ -452,7 +452,7 @@ namespace LyThuyetDoThi
                     // \r\n dùng để xuống dòng
                     ketLuan += "\r\nTổng trọng số của cây khung là: " + tongTrongSo;
                     txb_KetLuan.Text = ketLuan;
-                }    
+                }
             }
             txb_Prim.Text = "";
         }
@@ -470,8 +470,8 @@ namespace LyThuyetDoThi
                 return;
             }
             // Tìm đối tượng đỉnh bắt đầu và đỉnh cuối từ danh sách đỉnh trong đồ thị
-             Dinh dinhBatDau = dt.Dinh.FirstOrDefault(d => d.Ten == tenDinhBatDau);
-             Dinh dinhCuoi = dt.Dinh.FirstOrDefault(d => d.Ten == tenDinhCuoi);
+            Dinh dinhBatDau = dt.Dinh.FirstOrDefault(d => d.Ten == tenDinhBatDau);
+            Dinh dinhCuoi = dt.Dinh.FirstOrDefault(d => d.Ten == tenDinhCuoi);
             // Kiểm tra xem đỉnh bắt đầu và đỉnh cuối có tồn tại trong đồ thị hay không
             if (dinhBatDau == null || dinhCuoi == null)
             {
@@ -513,11 +513,11 @@ namespace LyThuyetDoThi
                         ketLuan += "\r\nTổng trọng số của đường đi là: " + tongTrongSo;
                         txb_KetLuan.Text = ketLuan;
                     }
-                }    
+                }
                 // Xóa nội dung các textbox sau khi chạy thuật toán
                 txb_DinhDauCuaFord.Text = "";
                 txb_DinhCuoiCuaFord.Text = "";
-            }    
+            }
         }
 
         private void bt_XetLienThong_Click(object sender, EventArgs e)
@@ -527,7 +527,7 @@ namespace LyThuyetDoThi
             if (dt.Dinh.Count == 0 || dt.Canh.Count == 0)
             {
                 MessageBox.Show("Chưa nhập đồ thị", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-             
+
             }
             else
             {
@@ -540,7 +540,7 @@ namespace LyThuyetDoThi
                 {
                     MessageBox.Show("Đồ thị không liên thông", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }    
+            }
         }
 
         private void bt_Refresh_Click(object sender, EventArgs e)
@@ -561,6 +561,88 @@ namespace LyThuyetDoThi
             // Refresh() để hiển thị panel rỗng
             panel_Graph.Refresh();
             txb_KetLuan.Text = "";
+        }
+
+        private void themDinhTuDocFile (Dinh dinhDocFile)
+        {
+            Dinh newDinh = new Dinh();
+     
+            int length = dt.Dinh.Count;        // Lấy số lượng của lớp Đỉnh
+
+            // Tạo đỉnh đầu tiên
+            if (length == 0)
+            {
+                newDinh.Ten = dinhDocFile.Ten;
+                newDinh.ToadoX = ToaDoX_DinhDauTien;
+                newDinh.ToadoY = ToaDoY_DinhDauTien;
+                dt.Dinh.Add(newDinh);
+                veDinh();
+            }
+            // Tạo đỉnh tiếp theo
+            else if (length > 0)
+            {
+                // Lấy đỉnh cuối của mảng Đỉnh
+                Dinh dinhCuoi = dt.Dinh[length - 1];
+
+                // Kiểm tra tọa độ x của đỉnh được tạo với chiều rộng của panel_Graph
+                if (dinhCuoi.ToadoX + DuongKinh + widthDinh >= panel_Graph.Width - 1)
+                {
+                    // Kiểm tra tọa độ y của đỉnh được tạo với (chiều cao của panel_Graph - chiều cao của textbox)
+                    if (dinhCuoi.ToadoY + DuongKinh + heightDinh >= panel_Graph.Height - heightTextbox)
+                    {
+                        MessageBox.Show("Không thể thêm đỉnh", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;      // Thoát khỏi hàm
+                    }
+                    else
+                    {
+                        // Gán giá trị tọa độ x của đỉnh được tạo = với giá trị tọa độ x đỉnh đầu tiên
+                        // Gía trị tọa độ y của đỉnh được tạo = giá trị tọa độ y đỉnh đầu tiên + đường kính của hình tròn được vẽ + khoảng cách chiều cao của 2 đỉnh
+                        newDinh.ToadoX = ToaDoX_DinhDauTien;
+                        newDinh.ToadoY = dinhCuoi.ToadoY + DuongKinh + heightDinh;
+                    }
+                }
+                else
+                {
+                    // Gán giá trị tọa độ x của đỉnh được tạo = giá trị tọa độ x của đỉnh đầu tiên + đường kính của hình tròn được vẽ + khoảng cách chiều rộng của 2 đỉnh
+                    // Gán giá trị tọa độ y của đỉnh được tạo = giá trị tọa độ y của đỉnh đầu tiên
+                    newDinh.ToadoX = dinhCuoi.ToadoX + DuongKinh + widthDinh;
+                    newDinh.ToadoY = dinhCuoi.ToadoY;
+                }
+                newDinh.Ten = dinhDocFile.Ten;
+                dt.Dinh.Add(newDinh);
+                veDinh();
+            }
+        }
+
+        private void themCanhTuDocFile(Canh canhDocFile)
+        {
+            Dinh DinhDauDaTonTai = dt.Dinh.FirstOrDefault(d => d.Ten == canhDocFile.Dinhdau.Ten);
+            Dinh DinhCuoiDaTonTai = dt.Dinh.FirstOrDefault(d => d.Ten == canhDocFile.Dinhcuoi.Ten);
+            Canh newCanh = new Canh();
+            newCanh.Dinhdau = DinhDauDaTonTai;
+            newCanh.Dinhcuoi = DinhCuoiDaTonTai;
+            newCanh.Trongso = canhDocFile.Trongso;
+            dt.Canh.Add(newCanh);
+            veCanh();
+        }
+        private void bt_DocFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Tệp tin văn bản (*.txt)|*.txt";
+            openFileDialog.Title = "Chọn tệp tin";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+                DoThi docfileDT = new HoTro().docfile(filePath);
+                foreach (Dinh dinh in docfileDT.Dinh)
+                {
+                    themDinhTuDocFile(dinh);
+                }
+                foreach (Canh canh in docfileDT.Canh)
+                {
+                    themCanhTuDocFile(canh);
+                }
+            }
         }
     }
 }

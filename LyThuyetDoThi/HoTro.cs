@@ -8,9 +8,48 @@ namespace LyThuyetDoThi
 {
     public class HoTro
     {
-        public DoThi docfile()
+        public DoThi docfile(string filePath)
         {
-            return new DoThi();
+            DoThi doThi = new DoThi();
+
+            using (StreamReader sr = new StreamReader(filePath))
+            {
+                string line;
+                char currentLine = 'A';
+                List<char> dinhdaduyet = new List<char>();
+                // Đọc từng dòng trong tệp tin cho đến khi đến cuối tệp tin
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] dsTrongSoString = line.Split(' ');
+                    int[] dsTrongSo = Array.ConvertAll(dsTrongSoString, int.Parse);
+                    // Xử tìm danh sách cạnh của đỉnh hiện tại 
+                    char startChar = 'A';
+                    for (int indexTrongSo = 0; indexTrongSo < dsTrongSo.Length; indexTrongSo++)
+                    {
+                        char curChar = Convert.ToChar(startChar + indexTrongSo);
+
+                        if (dsTrongSo[indexTrongSo] != 0 && !dinhdaduyet.Contains(curChar))
+                        {
+                            Dinh dinhdau = new Dinh();
+                            dinhdau.Ten = currentLine + "";
+                            Dinh dinhcuoi = new Dinh();
+                            dinhcuoi.Ten = Convert.ToChar(startChar + indexTrongSo) + "";
+                            Canh canh = new Canh();
+                            canh.Dinhdau = dinhdau;
+                            canh.Dinhcuoi = dinhcuoi;
+                            canh.Trongso = dsTrongSo[indexTrongSo];
+
+                            doThi.Canh.Add(canh);
+                        }
+                    }
+                    Dinh dinh = new Dinh();
+                    dinh.Ten = currentLine.ToString();
+                    doThi.Dinh.Add(dinh);
+                    dinhdaduyet.Add(currentLine);
+                    currentLine++;
+                }
+            }
+            return doThi;
         }
         public bool xetLienThong(DoThi doThi)
         {
