@@ -15,7 +15,7 @@ namespace LyThuyetDoThi
             using (StreamReader sr = new StreamReader(filePath))
             {
                 string line;
-                char currentLine = 'A';
+                char currentLine = 'a';
                 List<char> dinhdaduyet = new List<char>();
                 // Đọc từng dòng trong tệp tin cho đến khi đến cuối tệp tin
                 while ((line = sr.ReadLine()) != null)
@@ -23,7 +23,7 @@ namespace LyThuyetDoThi
                     string[] dsTrongSoString = line.Split(' ');
                     int[] dsTrongSo = Array.ConvertAll(dsTrongSoString, int.Parse);
                     // Xử tìm danh sách cạnh của đỉnh hiện tại 
-                    char startChar = 'A';
+                    char startChar = 'a';
                     for (int indexTrongSo = 0; indexTrongSo < dsTrongSo.Length; indexTrongSo++)
                     {
                         char curChar = Convert.ToChar(startChar + indexTrongSo);

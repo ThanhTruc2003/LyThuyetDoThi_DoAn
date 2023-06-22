@@ -15,10 +15,10 @@ namespace LyThuyetDoThi
     public partial class main : Form
     {
         private DoThi dt;
-        private int widthDinh = 500;
+        private int widthDinh = 180;
         private int heightDinh = 100;
         private int heightTextbox = 46;
-        private int DuongKinh = 40;
+        private int DuongKinh = 20;
         private int ToaDoX_DinhDauTien = 137;
         private int ToaDoY_DinhDauTien = 99;
         private int TrongSoCanhDaThem = 0;
@@ -432,27 +432,36 @@ namespace LyThuyetDoThi
             }
             else
             {
-                // Kiểm tra xem có cạnh có trọng số âm trong đồ thị hay không
-                bool coCanhAm = dt.Canh.Any(c => c.Trongso < 0);
-                if (coCanhAm)
+                HoTro hoTro = new HoTro();
+                bool isLienThong = hoTro.xetLienThong(dt);
+                if (isLienThong == false)
                 {
-                    MessageBox.Show("Đồ thị chứa cạnh có trọng số âm", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    MessageBox.Show("Không chạy được thuật toán do đồ thị không liên thông", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }    
                 else
                 {
-                    List<Dinh> duongDiThuatToanPrim = new HoTro().timDuongDiThuatToanPrim(dt, dinhBatDau);
-                    toMau(duongDiThuatToanPrim);
-                    // Tính tổng trọng số cây khung nhỏ nhất
-                    int tongTrongSo = tinhTongTrongSo(duongDiThuatToanPrim);
+                    // Kiểm tra xem có cạnh có trọng số âm trong đồ thị hay không
+                    bool coCanhAm = dt.Canh.Any(c => c.Trongso < 0);
+                    if (coCanhAm)
+                    {
+                        MessageBox.Show("Đồ thị chứa cạnh có trọng số âm", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        List<Dinh> duongDiThuatToanPrim = new HoTro().timDuongDiThuatToanPrim(dt, dinhBatDau);
+                        toMau(duongDiThuatToanPrim);
+                        // Tính tổng trọng số cây khung nhỏ nhất
+                        int tongTrongSo = tinhTongTrongSo(duongDiThuatToanPrim);
 
-                    // Kết hợp các giá trị của thuộc tính Ten của các đối tượng trong danh sách duongDiThuatToanPrim thành một chuỗi duy nhất, với chuỗi phân tách " -> " nằm giữa các giá trị.
-                    // Kết quả là một chuỗi sẽ hiển thị các tên của các đỉnh trong danh sách được nối lại với nhau, ngăn cách bằng chuỗi phân tách. 
-                    string ketLuan = "Vậy cây khung nhỏ nhất của đồ thị là: " + string.Join(" -> ", duongDiThuatToanPrim.Select(d => d.Ten));
+                        // Kết hợp các giá trị của thuộc tính Ten của các đối tượng trong danh sách duongDiThuatToanPrim thành một chuỗi duy nhất, với chuỗi phân tách " -> " nằm giữa các giá trị.
+                        // Kết quả là một chuỗi sẽ hiển thị các tên của các đỉnh trong danh sách được nối lại với nhau, ngăn cách bằng chuỗi phân tách. 
+                        string ketLuan = "Vậy cây khung nhỏ nhất của đồ thị là: " + string.Join(" -> ", duongDiThuatToanPrim.Select(d => d.Ten));
 
-                    // \r\n dùng để xuống dòng
-                    ketLuan += "\r\nTổng trọng số của cây khung là: " + tongTrongSo;
-                    txb_KetLuan.Text = ketLuan;
-                }
+                        // \r\n dùng để xuống dòng
+                        ketLuan += "\r\nTổng trọng số của cây khung là: " + tongTrongSo;
+                        txb_KetLuan.Text = ketLuan;
+                    }
+                }    
             }
             txb_Prim.Text = "";
         }
@@ -486,7 +495,6 @@ namespace LyThuyetDoThi
                 if (coCanhAm)
                 {
                     MessageBox.Show("Đồ thị chứa chu trình âm", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
                 }
                 else
                 {
@@ -497,7 +505,6 @@ namespace LyThuyetDoThi
                     {
                         // Hiển thị thông báo lỗi nếu không tồn tại đường đi
                         MessageBox.Show("Không có đường đi", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
                     }
                     else
                     {
